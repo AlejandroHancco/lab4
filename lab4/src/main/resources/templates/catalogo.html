@@ -27,7 +27,7 @@
 
 
 
-    <form method="get" action="/employee/search" class="row mt-4">
+    <form method="get" action="/flores/search" class="row mt-4">
         <!-- Campo de búsqueda -->
         <div class="col-md-10">
             <input type="text" name="query" class="form-control" placeholder="Buscar flor">
@@ -47,6 +47,41 @@
 
 
     <hr class="opacity-0">
+
+    <!-- Lista de flores -->
+    <div class="row">
+        <div class="col-md-4" th:each="flor : ${floresList}">
+            <div class="card mb-4">
+                <img th:src="${flor.imagen_url}" class="card-img-top" alt="Imagen de la flor" style="height: 400px; object-fit: cover;" />
+                <div class="card-body">
+                    <h5 class="card-title text-center" th:text="${flor.nombre}">Nombre de la flor</h5>
+                    <p class="card-text text-muted" th:text="${flor.descripcion}">Descripción de la flor</p>
+                    <p class="card-text">
+                    <div><strong>Precio:</strong> <span th:text="${'S/. '+ flor.precio}"> 0.00</span></div>
+                    <div><strong>Disponibles:</strong> <span th:text="${flor.cantidad}">0</span></div>
+                    </p>
+
+                    <!-- Botones -->
+                    <div class="d-grid gap-2">
+                        <!-- Botón Agregar al carrito -->
+                        <a href="#" class="btn btn-success px-3">
+                            <i class="fas fa-cart-plus"></i> Agregar al carrito
+                        </a>
+                        <!-- Botón Quitar del carrito -->
+                        <a href="#" class="btn btn-danger px-3">
+                            <i class="fas fa-cart-arrow-down"></i> Quitar del carrito
+                        </a>
+                        <!-- Botón Comprar ahora -->
+                        <a href="#" class="btn btn-warning px-3">
+                            <i class="fas fa-credit-card"></i> Comprar ahora
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 </div>
