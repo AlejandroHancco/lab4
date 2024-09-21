@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="clearfix mt-3 mt-2 mx-5">
+  <a th:href="@{/flores/entretenimiento}">
+    <h1 class="float-start link-dark">Entretenimiento</h1>
+  </a>
+  <a class="btn btn-primary float-end mt-1" style="margin-right: 10px" th:href="@{/flores/catalogo}">Catálogo</a>
+  <a class="btn btn-primary float-end mt-1 " style="margin-right: 10px" th:href="@{/flores/carrito}">Carrito</a>
+
+</div>
+<hr>
+<div class="row">
+  <h1 class="text-center" style="color: yellow; width: 100%; font-size: 3rem; text-shadow: 2px 2px 1px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;">
+    Flores amarillas
+  </h1>
+
+</div>
+
+
+<div class="container mt-5">
+  <h1 class="text-center mt-4 mb-4" style="font-size: 2.5rem; color: #343a40; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);">
+    Lista de Usuarios
+  </h1>
+  <table class="table table-striped mt-4">
+    <thead>
+    <tr>
+      <th>ID Usuario</th>
+      <th>Nombre</th>
+      <th>Puntuación</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usuario : ${usuarioList}">
+      <td th:text="${usuario.id_usuario}">ID Usuario</td>
+      <td th:text="${usuario.nombre}">Nombre</td>
+      <td th:text="${usuario.puntuacion}">Puntuación</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="d-flex justify-content-center align-items-center mt-1">
+  <!-- Formulario para el nickname -->
+  <form th:action="@{/flores/entretenimiento/juego}" method="post" class="me-2">
+    <div class="input-group">
+      <input type="text" name="nickname" class="form-control" placeholder="Introduce tu nickname" required>
+      <button type="submit" class="btn btn-success">Ir al juego</button>
+    </div>
+  </form>
+
+
+</div>
+
+
+
+
+</body>
+</html>
